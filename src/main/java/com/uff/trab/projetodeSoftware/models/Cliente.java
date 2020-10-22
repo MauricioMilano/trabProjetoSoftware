@@ -21,5 +21,6 @@ public class Cliente {
 
     public boolean ehPreferencial(){
         return this.prefencial;
+
     }
 }
