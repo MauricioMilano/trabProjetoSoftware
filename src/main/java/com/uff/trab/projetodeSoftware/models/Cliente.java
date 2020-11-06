@@ -6,15 +6,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Date;
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Cliente implements ClienteInterface {
-    private int cpf;
+    @Id
+    private String cpf;
     private int identidade;
     private String email;
+    @OneToOne
     private Endereco endereco;
     private boolean prefencial;
     private int pontosAcumulados;
@@ -29,7 +35,7 @@ public class Cliente implements ClienteInterface {
     public boolean trocarPontos(int pontos) {
         if (this.pontosAcumulados>pontos){
             this.pontosAcumulados-=pontos;
-            ClienteRepositorio.atualizarCliente(this);
+//            ClienteRepositorio.atualizarCliente(this);
 ;           return true;
         }
         return false;
